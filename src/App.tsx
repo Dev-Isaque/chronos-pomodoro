@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Heading } from './components/Heading';
 
-function App() {
-  const [count, setCount] = useState(0)
+import './styles/theme.css';
+import './styles/global.css';
 
+export function App() {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+      
+      <Heading attr={123} attr2='String'>Olá Mundo 1</Heading>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet
+        nibh pulvinar, fringilla nibh eu, ornare metus. Ut venenatis justo mi,
+        et iaculis elit iaculis ac. Curabitur posuere lacus felis, a congue est
+        volutpat nec. Donec eu lorem dui. In condimentum tempor purus, a
+        pellentesque eros commodo sit amet. Quisque venenatis metus at enim
+        elementum suscipit. Cras et est vel velit efficitur eleifend. Aliquam
+        non iaculis diam, sed bibendum velit. Aliquam non sagittis augue. Nulla
+        nec dignissim augue. Mauris non arcu quis ligula ornare faucibus.
+        Vivamus ac nibh maximus, accumsan orci ultricies, venenatis libero.
       </p>
     </>
-  )
+  );
 }
 
-export default App
+// export {App};
