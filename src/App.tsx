@@ -1,26 +1,35 @@
+import { Container } from './components/Container';
+import { Logo } from './components/Logo';
+
 import './styles/theme.css';
 import './styles/global.css';
-import { Heading } from './components/Heading';
-import { Container } from './components/Container';
+import { Menu } from './components/Menu';
+import { CountDown } from './components/CountDown';
+import { DefaultInput } from './components/DefaultInput';
 
 export function App() {
   return (
     <>
       <Container>
-        <Heading> Testando meu componente Heading </Heading>  
-        <section>LOGOTIPO</section>
+        <Logo />
       </Container>
 
       <Container>
-        <section>MENU</section>
+        <Menu />
       </Container>
 
       <Container>
-        <section>FORM</section>
+        <CountDown />
       </Container>
 
       <Container>
-        <section>FOOTER</section>
+        <form className='form' action=''>
+          <div className='formRow'>
+            <DefaultInput labelText='Task' id='task' type='text' placeholder='Digite aqui' />
+          </div>
+
+
+        </form>
       </Container>
     </>
   );
