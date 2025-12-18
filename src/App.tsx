@@ -6,10 +6,26 @@ import './styles/global.css';
 import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
 import { DefaultInput } from './components/DefaultInput';
+import { Cycles } from './components/Cycles';
+import { DefaultButton } from './components/DefaultButton';
+import { PlayCircleIcon } from 'lucide-react';
+import { Footer } from './components/Footer';
+import { Heading } from './components/Heading';
+import { useState } from 'react';
 
 export function App() {
+  const [numero, setNumero] = useState(0);
+
+  function handleClick() {
+    setNumero(prevState => prevState + 1);
+  }
+
   return (
     <>
+      <Heading>Número: {numero}</Heading>
+
+      <button onClick={handleClick}>Aumenta</button>
+
       <Container>
         <Logo />
       </Container>
@@ -25,11 +41,29 @@ export function App() {
       <Container>
         <form className='form' action=''>
           <div className='formRow'>
-            <DefaultInput labelText='Task' id='task' type='text' placeholder='Digite aqui' />
+            <DefaultInput
+              labelText={numero.toString()}
+              id='task'
+              type='text'
+              placeholder='Digite aqui'
+            />
           </div>
 
+          <p>Lorem ipsum dolor sit, amet consectetur.</p>
 
+          <div className='formRow'>
+            <Cycles />
+          </div>
+
+          <div className='formRow'>
+            <DefaultButton icon={<PlayCircleIcon />} color='green' />
+            {/* <DefaultButton icon={<StopCircleIcon />} color='red' /> */}
+          </div>
         </form>
+      </Container>
+
+      <Container>
+        <Footer />
       </Container>
     </>
   );
