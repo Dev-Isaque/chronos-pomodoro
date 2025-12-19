@@ -1,11 +1,14 @@
 import { CogIcon, HouseIcon, SunIcon, TimerResetIcon } from 'lucide-react';
 import styles from './styles.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type AvailableThemes = 'dark' | 'light';
 
 export function Menu() {
-  const [theme, setTheme] = useState<AvailableThemes>('dark');
+    const [theme, setTheme] = useState<AvailableThemes>(() => {
+    const savedTheme = localStorage.getItem('theme') as AvailableThemes || 'dark';
+    return savedTheme;
+  });
 
   function handleThmeChange(
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -18,8 +21,23 @@ export function Menu() {
       return nextTheme;
     });
 
-    document.documentElement.setAttribute('data-theme', theme);
+    
   }
+
+  /*  useEffect(() => {
+    console.log('useEffect sem dependências:', theme);
+  }); // Executado toda vez que o componente renderiza na tela */
+
+  /*   useEffect(() => {
+    console.log('useEffect com array deps vazio:', theme);
+  }, []); // Executa apenas quando o React monta o componente na tela pela primeira vez */
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    localStorage.setItem('theme', theme);
+  }, [theme]); // Executa sempre que a variável 'theme' for alterada
+
   return (
     <div className={styles.menu}>
       <h1>{theme}</h1>
