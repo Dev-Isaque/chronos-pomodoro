@@ -1,4 +1,4 @@
-import { CogIcon, HouseIcon, SunIcon, TimerResetIcon } from 'lucide-react';
+import { CogIcon, HouseIcon, MoonIcon, SunIcon, TimerResetIcon } from 'lucide-react';
 import styles from './styles.module.css';
 import { useEffect, useState } from 'react';
 
@@ -9,6 +9,12 @@ export function Menu() {
     const savedTheme = localStorage.getItem('theme') as AvailableThemes || 'dark';
     return savedTheme;
   });
+
+
+  const nextThemeIcon = {
+    dark: <SunIcon />,
+    light: <MoonIcon />,
+  }
 
   function handleThmeChange(
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -73,7 +79,7 @@ export function Menu() {
         title='Theme'
         onClick={event => handleThmeChange(event)}
       >
-        <SunIcon />
+        {nextThemeIcon[theme]}
       </a>
     </div>
   );
