@@ -1,20 +1,26 @@
-import { CogIcon, HouseIcon, MoonIcon, SunIcon, TimerResetIcon } from 'lucide-react';
+import {
+  CogIcon,
+  HouseIcon,
+  MoonIcon,
+  SunIcon,
+  TimerResetIcon,
+} from 'lucide-react';
 import styles from './styles.module.css';
 import { useEffect, useState } from 'react';
 
 type AvailableThemes = 'dark' | 'light';
 
 export function Menu() {
-    const [theme, setTheme] = useState<AvailableThemes>(() => {
-    const savedTheme = localStorage.getItem('theme') as AvailableThemes || 'dark';
+  const [theme, setTheme] = useState<AvailableThemes>(() => {
+    const savedTheme =
+      (localStorage.getItem('theme') as AvailableThemes) || 'dark';
     return savedTheme;
   });
-
 
   const nextThemeIcon = {
     dark: <SunIcon />,
     light: <MoonIcon />,
-  }
+  };
 
   function handleThmeChange(
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -26,8 +32,6 @@ export function Menu() {
       const nextTheme = prevTheme === 'dark' ? 'light' : 'dark';
       return nextTheme;
     });
-
-    
   }
 
   /*  useEffect(() => {
@@ -40,14 +44,12 @@ export function Menu() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    
+
     localStorage.setItem('theme', theme);
   }, [theme]); // Executa sempre que a variável 'theme' for alterada
 
   return (
     <div className={styles.menu}>
-      <h1>{theme}</h1>
-
       <a
         className={styles['menu-link']}
         href='#'
