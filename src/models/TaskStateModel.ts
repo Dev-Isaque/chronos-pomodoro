@@ -1,5 +1,7 @@
 import type { TaskModel } from "./TaskModel"
 
+// Estado -> Componente -> Filhos
+
 export type TaskStateModel = {
     tasks : TaskModel[]; //Historico, MainForm
     secondsRemaining: number; // Countdown, Histórico, MainForm, Button
