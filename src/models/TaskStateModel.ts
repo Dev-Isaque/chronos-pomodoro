@@ -1,8 +1,8 @@
 import type { TaskModel } from "./TaskModel"
 
 export type TaskStateModel = {
-    tasks : TaskModel[];
-    secondsRemaining: number;
+    tasks : TaskModel[]; //Historico, MainForm
+    secondsRemaining: number; // Countdown, Histórico, MainForm, Button
     formatedSecondsRemaining: string;
     activeTask: TaskModel | null;
     currentCycle: number;
@@ -11,4 +11,5 @@ export type TaskStateModel = {
         shortBreakTime: number;
         longBreakTime: number;
     }
+    
 }
