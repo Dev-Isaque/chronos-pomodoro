@@ -1,5 +1,7 @@
 import type { TaskModel } from "./TaskModel"
 
+// Estado -> Componente -> Filhos
+
 export type TaskStateModel = {
     tasks : TaskModel[];
     secondsRemaining: number;
