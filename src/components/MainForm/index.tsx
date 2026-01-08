@@ -6,25 +6,25 @@ import { DefaultInput } from '../DefaultInput';
 export function MainForm() {
   return (
     <form className='form' action=''>
-      <button type='button'>clicar</button>
       <div className='formRow'>
         <DefaultInput
-          labelText='Tarefa'
-          id='task'
+          labelText='task'
+          id='meuInput'
           type='text'
-          placeholder='Digite aqui'
+          placeholder='Digite algo'
         />
       </div>
 
-      <p>Próximo intervalo é de 25min</p>
+      <div className='formRow'>
+        <p>Próximo intervalo é de 25min</p>
+      </div>
 
       <div className='formRow'>
         <Cycles />
       </div>
 
       <div className='formRow'>
-        <DefaultButton icon={<PlayCircleIcon />} color='green' />
-        {/* <DefaultButton icon={<StopCircleIcon />} color='red' /> */}
+        <DefaultButton icon={<PlayCircleIcon />} />
       </div>
     </form>
   );
