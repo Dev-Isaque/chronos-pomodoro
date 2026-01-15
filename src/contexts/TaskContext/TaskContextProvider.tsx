@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { initialTaskState } from './initialTaskState';
 import { TaskContext } from './TaskContext';
 
@@ -9,13 +9,60 @@ type TaskContextProviderProps = {
 export function TaskContextProvider({ children }: TaskContextProviderProps) {
   const [state, setState] = useState(initialTaskState);
 
-  useEffect(() => {
-    console.log('Task State updated:', state);
-  }, [state]);
+  type ActionType = {
+    type: string;
+    payload?: number;
+  };
+
+  const [myState, dispatch] = useReducer(
+    (state, action: ActionType) => {
+      console.log(state, action);
+
+      switch (action.type) {
+        case 'INCREMENT': {
+          if (!action.payload) return state;
+
+          return {
+            ...state,
+            secondsRemaining: state.secondsRemaining + 10,
+          };
+        }
+        case 'DECREMENT': {
+          if (!action.payload) return state;
+
+          return {
+            ...state,
+            secondsRemaining: state.secondsRemaining - 10,
+          };
+        }
+        case 'RESEt': {
+
+          return {
+            ...state,
+            secondsRemaining: 0,
+          };
+        }
+      }
+
+      return state; // estado atual (não altera)
+    },
+    { secondsRemaining: 0 },
+  );
+
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
 
   return (
     <TaskContext.Provider value={{ state, setState }}>
-      {children}
+      <h1>O estado é: {JSON.stringify(myState)}</h1>
+      <button onClick={() => dispatch({ type: 'INCREMENT', payload: 10 })}>
+        Incrementar +10
+      </button>
+      <button onClick={() => dispatch({ type: 'DECREMENT', payload: 10 })}>
+        Decrementar -10
+      </button>
+      <button onClick={() => dispatch({ type: 'RESEt' })}>Resetar</button>
     </TaskContext.Provider>
   );
 }
