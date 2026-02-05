@@ -25,7 +25,7 @@ export function MainForm() {
     const taskName = taskNameInput.current.value.trim();
 
     if (!taskName) {
-      alert('Digite o nome da tarefa');
+      alert('Digite o nome da tarefa!');
       return;
     }
 
